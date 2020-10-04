@@ -1,0 +1,42 @@
+# SensibleMetrics Web Service Security test configuration
+---
+spring:
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages
+    # 1 hour
+    cache-duration: 3600
+  main:
+    allow-bean-definition-overriding: true
+  task:
+    execution:
+      thread-name-prefix: test
+      pool:
+        core-size: 10
+        max-size: 20
+        queue-capacity: 100000
+
+customiere:
+  security:
+    enabled: true
+    property:
+      encrypted-prefix: ENC@
+      encrypted-marker: enc.
+      enabled: true
+
+jasypt:
+  encryptor:
+    property:
+      filter-bean: encryptablePropertyFilter
+      resolver-bean: encryptablePropertyResolver
+      detector-bean: encryptablePropertyDetector
+      prefix: "ENC@["
+      suffix: "]"
+      filter:
+        include-names:
+          - ^secret2.*
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    bean: jasyptStringEncryptor
+    skip-property-sources: org.springframework.boot.env.RandomValuePropertySource,org.springframework.boot.ansi.AnsiPropertySource
+    password: ${JASYPT_ENCRYPTOR_PASSWORD:}

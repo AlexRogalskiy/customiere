@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.sensiblemetrics.api</groupId>
+        <artifactId>customiere-parent</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>
+    </parent>
+
+    <name>com.sensiblemetrics.api.customiere.crm.clients</name>
+    <description>Customiere CRM Clients API</description>
+    <artifactId>customiere-crm-clients</artifactId>
+    <packaging>jar</packaging>
+    <url>https://github.com/AlexRogalskiy/customiere/tree/master/modules/customiere-crm-clients</url>
+    <inceptionYear>2020</inceptionYear>
+
+    <properties>
+        <spring-boot-thin.version>1.0.25.RELEASE</spring-boot-thin.version>
+        <spring-integration.version>5.3.2.RELEASE</spring-integration.version>
+
+        <swagger.version>3.0.0</swagger.version>
+
+        <eclipse-paho-client.version>1.2.5</eclipse-paho-client.version>
+        <hibernate-core.version>6.0.0.Alpha6</hibernate-core.version>
+        <hibernate-types.version>2.9.13</hibernate-types.version>
+        <cache-api.version>1.1.1</cache-api.version>
+        <ehcache.version>3.9.0</ehcache.version>
+        <hikari.version>3.4.5</hikari.version>
+
+        <reactor-netty.version>0.9.12.RELEASE</reactor-netty.version>
+        <reactor-core.version>3.3.10.RELEASE</reactor-core.version>
+
+        <image.to.path>registry.hub.docker.com/alexanderr/customiere</image.to.path>
+
+        <liquibase.propertyFile>${project.basedir}/src/main/resources/liquibase.properties</liquibase.propertyFile>
+        <liquibase.version>4.0.0</liquibase.version>
+        <maven-exec-plugin.version>1.6.0</maven-exec-plugin.version>
+
+        <maven-liquibase-plugin.version>4.0.0</maven-liquibase-plugin.version>
+        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+        <modelmapper.version>2.3.8</modelmapper.version>
+        <p6spy.version>3.9.1</p6spy.version>
+        <r2dbc-postgresql.version>0.8.5.RELEASE</r2dbc-postgresql.version>
+
+        <sensiblemetrics.version>0.1.0-SNAPSHOT</sensiblemetrics.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+            <id>Eclipse Paho Repo</id>
+            <name>Eclipse Repository</name>
+            <url>https://repo.eclipse.org/content/repositories/paho-releases/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- Spring Boot library dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-reactor-netty</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
+
+        <!-- SensibleMetrics library dependencies -->
+        <dependency>
+            <groupId>com.sensiblemetrics.api</groupId>
+            <artifactId>customiere-actuator</artifactId>
+            <version>${sensiblemetrics.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sensiblemetrics.api</groupId>
+            <artifactId>customiere-commons</artifactId>
+            <version>${sensiblemetrics.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sensiblemetrics.api</groupId>
+            <artifactId>customiere-executor</artifactId>
+            <version>${sensiblemetrics.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sensiblemetrics.api</groupId>
+            <artifactId>customiere-logger</artifactId>
+            <version>${sensiblemetrics.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sensiblemetrics.api</groupId>
+            <artifactId>customiere-metrics</artifactId>
+            <version>${sensiblemetrics.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sensiblemetrics.api</groupId>
+            <artifactId>customiere-validation</artifactId>
+            <version>${sensiblemetrics.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sensiblemetrics.api</groupId>
+            <artifactId>customiere-security</artifactId>
+            <version>${sensiblemetrics.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Swagger library dependencies -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-spring-webflux</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-common</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+
+        <!-- Hikari connection pool library dependencies -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikari.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun</groupId>
+                    <artifactId>tools</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Hibernate ORM library dependencies -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-core.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-runtime</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>${hibernate-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-jcache</artifactId>
+            <version>${hibernate-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>${hibernate-core.version}</version>
+        </dependency>
+
+        <!-- Hibernate types library dependencies -->
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-52</artifactId>
+            <version>${hibernate-types.version}</version>
+        </dependency>
+
+        <!-- Cache library dependencies -->
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+            <version>${cache-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-runtime</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Reactor netty library dependencies -->
+        <dependency>
+            <groupId>io.projectreactor.netty</groupId>
+            <artifactId>reactor-netty</artifactId>
+            <version>${reactor-netty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <version>${reactor-core.version}</version>
+        </dependency>
+
+        <!-- Liquibase library dependencies -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
+
+        <!-- Model Mapper library dependencies -->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
+        </dependency>
+
+        <!-- PostgreSQL library dependencies -->
+        <dependency>
+            <groupId>io.r2dbc</groupId>
+            <artifactId>r2dbc-postgresql</artifactId>
+            <version>${r2dbc-postgresql.version}</version>
+        </dependency>
+
+        <!-- P6spy library dependencies -->
+        <dependency>
+            <groupId>p6spy</groupId>
+            <artifactId>p6spy</artifactId>
+            <version>${p6spy.version}</version>
+        </dependency>
+
+        <!-- HSQL DB test library dependencies -->
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- SensibleMetrics test library dependencies -->
+        <dependency>
+            <groupId>com.sensiblemetrics.api</groupId>
+            <artifactId>customiere-commons</artifactId>
+            <version>${sensiblemetrics.version}</version>
+            <classifier>tests</classifier>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <defaultGoal>clean package</defaultGoal>
+        <finalName>${project.groupId}-${project.artifactId}-${project.version}</finalName>
+        <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+        <testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <filtering>true</filtering>
+                <directory>${project.basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
+
+        <plugins>
+            <plugin>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-maven-plugin</artifactId>
+                <version>${maven-jasypt-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <addResources>true</addResources>
+                    <classifier>exec</classifier>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework.boot.experimental</groupId>
+                        <artifactId>spring-boot-thin-layout</artifactId>
+                        <version>${spring-boot-thin.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${repackage.skip}</skip>
+                            <excludeDevtools>${excludeDevtools}</excludeDevtools>
+                            <classifier>exec</classifier>
+                            <outputDirectory>${project.build.directory}/repackage</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <!-- Jib profile -->
+        <profile>
+            <id>jib</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.google.cloud.tools</groupId>
+                        <artifactId>jib-maven-plugin</artifactId>
+                        <version>${maven-jib-plugin.version}</version>
+                        <configuration>
+                            <allowInsecureRegistries>true</allowInsecureRegistries>
+                            <from>
+                                <image>${image.from.path}</image>
+                            </from>
+                            <container>
+                                <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+                                <jvmFlags>
+                                    <jvmFlag>-Xdebug</jvmFlag>
+                                    <jvmFlag>-Xms128m</jvmFlag>
+                                    <jvmFlag>-Xmx128m</jvmFlag>
+                                    <jvmFlag>-Duser.timezone=GMT+08</jvmFlag>
+                                    <jvmFlag>-Djava.security.egd=file:/dev/./urandom</jvmFlag>
+                                    <jvmFlag>-Djava.awt.headless=true</jvmFlag>
+                                    <jvmFlag>-XX:InitialRAMFraction=2</jvmFlag>
+                                    <jvmFlag>-XX:MinRAMFraction=2</jvmFlag>
+                                    <jvmFlag>-XX:MaxRAMFraction=2</jvmFlag>
+                                    <jvmFlag>-XX:+UseG1GC</jvmFlag>
+                                    <jvmFlag>-XX:MaxGCPauseMillis=100</jvmFlag>
+                                    <jvmFlag>-XX:+UseStringDeduplication</jvmFlag>
+                                </jvmFlags>
+                                <ports>
+                                    <port>8089</port>
+                                </ports>
+                                <format>Docker</format>
+                            </container>
+                            <to>
+                                <image>${image.to.path}:${project.version}</image>
+                                <tags>
+                                    <tag>alpine</tag>
+                                    <tag>latest</tag>
+                                </tags>
+                            </to>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>dockerBuild</id>
+                                <goals>
+                                    <goal>dockerBuild</goal>
+                                </goals>
+                                <phase>package</phase>
+                            </execution>
+                            <execution>
+                                <id>build</id>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                                <phase>deploy</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- Uber jar profile -->
+        <profile>
+            <id>uber-jar</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-shade-plugin</artifactId>
+                            <version>${maven-shade-plugin.version}</version>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <version>${maven-shade-plugin.version}</version>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>shaded</shadedClassifierName>
+                            <minimizeJar>true</minimizeJar>
+                            <outputFile>${project.build.directory}/maven-shade/reduced-pom.zip</outputFile>
+
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>module-info.java</exclude>
+                                </excludes>
+                            </artifactSet>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                                <phase>package</phase>
+                                <configuration>
+                                    <transformers>
+                                        <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                            <manifestEntries>
+                                                <Implementation-Version>${project.version}</Implementation-Version>
+                                            </manifestEntries>
+                                        </transformer>
+                                    </transformers>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.moditect</groupId>
+                        <artifactId>moditect-maven-plugin</artifactId>
+                        <version>${maven-moditect-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>add-module-infos</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>add-module-info</goal>
+                                </goals>
+                                <configuration>
+                                    <overwriteExistingFiles>true</overwriteExistingFiles>
+                                    <module>
+                                        <moduleInfoFile>
+                                            src/main/java/module-info.java
+                                        </moduleInfoFile>
+                                    </module>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- HSQLDB profile -->
+        <profile>
+            <id>hsqldb</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>${maven-exec-plugin.version}</version>
+                        <configuration>
+                            <mainClass>org.hsqldb.server.Server</mainClass>
+                            <arguments>
+                                <argument>--database.0</argument>
+                                <argument>file:${project.build.directory}/db/devicedb</argument>
+                                <argument>--dbname.0</argument>
+                                <argument>devicedb</argument>
+                            </arguments>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- Liquibase profile -->
+        <profile>
+            <id>liquibase</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>${maven-liquibase-plugin.version}</version>
+                        <configuration>
+                            <propertyFile>${liquibase.propertyFile}</propertyFile>
+                            <changeLogFile>src/main/resources/config/liquibase/master.xml</changeLogFile>
+                            <diffChangeLogFile>
+                                ${project.basedir}/src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml
+                            </diffChangeLogFile>
+                            <promptOnNonLocalDatabase>true</promptOnNonLocalDatabase>
+                            <verbose>true</verbose>
+                            <logging>debug</logging>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

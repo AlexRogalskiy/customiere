@@ -1,0 +1,100 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: alexrogalskiy (generated)
+      preConditions:
+        - onFail: MARK_RAN
+        - or:
+            - dbms:
+                type: oracle
+            - dbms:
+                type: mysql
+            - dbms:
+                type: postgresql
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT count(*) FROM pg_type WHERE typname = 'status_client_enum'
+      changes:
+        - sql: CREATE TYPE status_client_enum AS ENUM ('ACTIVE', 'NEW', 'REGISTERED', 'INACTIVE')
+  - changeSet:
+      id: 2
+      author: alexrogalskiy (generated)
+      preConditions:
+        - onFail: MARK_RAN
+        - and:
+            - dbms:
+                type: postgresql
+            - not:
+                - tableExists:
+                    tableName: clients
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_by
+                  type: VARCHAR(512)
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: created
+                  type: TIMESTAMP
+              - column:
+                  constraints:
+                    nullable: true
+                  name: modified_by
+                  type: VARCHAR(512)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: modified
+                  type: TIMESTAMP
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: 0
+                  name: row_version
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: status_client
+                  type: VARCHAR(32) CHECK ("status_client" in ('ACTIVE', 'NEW', 'REGISTERED', 'INACTIVE'))
+                  defaultValue: 'NEW'
+            tableName: clients
+  - changeSet:
+      id: 3
+      author: alexrogalskiy (generated)
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - primaryKeyExists:
+                primaryKeyName: clients_pkey
+                tableName: clients
+      changes:
+        - addPrimaryKey:
+            columnNames: id
+            constraintName: clients_pkey
+            tableName: clients

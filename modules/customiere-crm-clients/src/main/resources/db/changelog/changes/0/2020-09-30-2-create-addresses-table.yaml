@@ -1,0 +1,190 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: alexrogalskiy (generated)
+      preConditions:
+        - onFail: MARK_RAN
+        - or:
+            - dbms:
+                type: oracle
+            - dbms:
+                type: mysql
+            - dbms:
+                type: postgresql
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT count(*) FROM pg_type WHERE typname = 'status_address_enum'
+      changes:
+        - sql: CREATE TYPE status_address_enum AS ENUM ('CANCELLED', 'NEW', 'REGISTERED', 'SUSPENDED')
+  - changeSet:
+      id: 5
+      author: alexrogalskiy (generated)
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: addresses
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_by
+                  type: VARCHAR(512)
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: created
+                  type: TIMESTAMP
+              - column:
+                  constraints:
+                    nullable: true
+                  name: modified_by
+                  type: VARCHAR(512)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: modified
+                  type: TIMESTAMP
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: 0
+                  name: row_version
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: country
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: city
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: street
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: postcode
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: status_address
+                  type: VARCHAR(32) CHECK ("status_address" in ('CANCELLED', 'NEW', 'REGISTERED', 'SUSPENDED'))
+                  defaultValue: 'NEW'
+              - column:
+                  constraints:
+                    nullable: false
+                  name: client_id
+                  type: UUID
+            tableName: addresses
+  - changeSet:
+      id: 6
+      author: alexrogalskiy (generated)
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - primaryKeyExists:
+                primaryKeyName: addresses_pkey
+                tableName: addresses
+      changes:
+        - addPrimaryKey:
+            columnNames: id
+            constraintName: addresses_pkey
+            tableName: addresses
+  - changeSet:
+      id: 7
+      author: alexrogalskiy (generated)
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - indexExists:
+                indexName: street_idx
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: street
+            indexName: street_idx
+            tableName: addresses
+  - changeSet:
+      id: 8
+      author: alexrogalskiy (generated)
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - indexExists:
+                indexName: country_idx
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: country
+            indexName: country_idx
+            tableName: addresses
+  - changeSet:
+      id: 9
+      author: alexrogalskiy (generated)
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - indexExists:
+                indexName: city_idx
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: city
+            indexName: city_idx
+            tableName: addresses
+  - changeSet:
+      id: 10
+      author: alexrogalskiy (generated)
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - indexExists:
+                indexName: country_city_street_idx
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: country
+              - column:
+                  name: city
+              - column:
+                  name: street
+            indexName: country_city_street_idx
+            tableName: addresses
+  - changeSet:
+      id: 11
+      author: alexrogalskiy (generated)
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - foreignKeyConstraintExists:
+                foreignKeyName: fk_addresses_client
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: client_id
+            baseTableName: addresses
+            constraintName: fk_addresses_client
+            deferrable: true
+            initiallyDeferred: true
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: clients

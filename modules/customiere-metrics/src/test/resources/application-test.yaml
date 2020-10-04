@@ -1,0 +1,35 @@
+# SensibleMetrics Web Service Metrics test configuration
+---
+spring:
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages
+    # 1 hour
+    cache-duration: 3600
+  main:
+    allow-bean-definition-overriding: true
+  task:
+    execution:
+      thread-name-prefix: test
+      pool:
+        core-size: 10
+        max-size: 20
+        queue-capacity: 100000
+
+customiere:
+  metrics:
+    defaults:
+      description: Customiere CRM Clients WebService
+      tags:
+        - key: scope
+          value: customiere
+    handlers:
+      tracking-time:
+        enabled: true
+      monitoring-time:
+        enabled: true
+    patterns:
+      exclude:
+        - tomcat.*
+      include:
+        - beans.*

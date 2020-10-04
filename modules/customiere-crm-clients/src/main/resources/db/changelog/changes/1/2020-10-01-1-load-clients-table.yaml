@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: alexrogalskiy (generated)
+      changes:
+        - sql:
+            sql: INSERT INTO clients(id, first_name, last_name, description, status_client, row_version, created, created_by) VALUES ('33b15cdc-1748-40c9-8c67-64ebd3870a75', 'Ivan', 'Demidov', 'Client', 'REGISTERED', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO clients(id, first_name, last_name, description, status_client, row_version, created, created_by) VALUES ('fb7dbfa2-0cc3-468e-a2e5-a6d0bc003329', 'Vasiliy', 'Egorov', 'Partner', 'NEW', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO clients(id, first_name, last_name, description, status_client, row_version, created, created_by) VALUES ('bc31a456-0c01-4821-96b1-f0c061201f71', 'Anatoly', 'Zamyatin', 'Agent', 'ACTIVE', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO clients(id, first_name, last_name, description, status_client, row_version, created, created_by) VALUES ('1339df96-4b7f-407a-996e-292e18176eb7', 'Eugene', 'Malyi', 'Client', 'INACTIVE', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO clients(id, first_name, last_name, description, status_client, row_version, created, created_by) VALUES ('474b0d63-a5b3-44eb-ac21-04d0c79d3eca', 'Alexander', 'Popov', 'Partner', 'NEW', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO clients(id, first_name, last_name, description, status_client, row_version, created, created_by) VALUES ('bac303b4-7aae-47cf-aa04-4bdb9ec2a44a', 'Andrei', 'Sidorenko', 'Agent', 'ACTIVE', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO clients(id, first_name, last_name, description, status_client, row_version, created, created_by) VALUES ('3c14d7a0-372c-4c24-8587-04227b10699c', 'Mark', 'Petrenko', 'Agent', 'ACTIVE', 0, '2019-08-26 12:39:16', 'system')

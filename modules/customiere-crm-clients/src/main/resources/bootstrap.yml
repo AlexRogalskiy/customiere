@@ -1,0 +1,35 @@
+# SensibleMetrics WebService CRM Clients Bootstrap configuration
+---
+spring:
+  application:
+    name: "CRM-Clients-WebService"
+  cloud:
+    kubernetes:
+      enabled: false
+      discovery:
+        enabled: false
+      config:
+        enabled: false
+        sources:
+          - name: common-config
+          - name: ${spring.application.name}
+      secrets:
+        enabled: false
+        name: ${spring.application.name}
+---
+spring:
+  profiles: compose
+  application:
+    name: "CRM-Clients-WebService"
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+      config:
+        enabled: true
+        sources:
+          - name: common-config
+          - name: ${spring.application.name}
+      secrets:
+        enabled: true
+        name: ${spring.application.name}

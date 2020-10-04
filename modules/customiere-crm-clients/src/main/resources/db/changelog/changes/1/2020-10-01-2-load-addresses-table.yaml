@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: alexrogalskiy (generated)
+      changes:
+        - sql:
+            sql: INSERT INTO addresses(id, country, city, street, postcode, status_address, client_id, row_version, created, created_by) VALUES ('33b15cdc-1748-40c9-8c67-64ebd3870a75', 'Russia', 'Moscow', 'Street-01', '100000', REGISTERED', '33b15cdc-1748-40c9-8c67-64ebd3870a75', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO addresses(id, country, city, street, postcode, status_address, client_id, row_version, created, created_by) VALUES ('fb7dbfa2-0cc3-468e-a2e5-a6d0bc003329', 'Moldovia', 'Crasnoe, 'Street-02', '200000', 'NEW', 0, '33b15cdc-1748-40c9-8c67-64ebd3870a75', '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO addresses(id, country, city, street, postcode, status_address, client_id, row_version, created, created_by) VALUES ('bc31a456-0c01-4821-96b1-f0c061201f71', 'Argentina', 'Buenos-Aires', 'Street-03', '300000', 'CANCELLED', 'fb7dbfa2-0cc3-468e-a2e5-a6d0bc003329', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO addresses(id, country, city, street, postcode, status_address, client_id, row_version, created, created_by) VALUES ('1339df96-4b7f-407a-996e-292e18176eb7', 'Brasil', 'Brasilia', 'Street-04', '400000', 'NEW', 'bc31a456-0c01-4821-96b1-f0c061201f71', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO addresses(id, country, city, street, postcode, status_address, client_id, row_version, created, created_by) VALUES ('474b0d63-a5b3-44eb-ac21-04d0c79d3eca', 'Nigeria', 'Lagos', 'Street-05', '500000', 'SUSPENDED', '1339df96-4b7f-407a-996e-292e18176eb7', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO addresses(id, country, city, street, postcode, status_address, client_id, row_version, created, created_by) VALUES ('bac303b4-7aae-47cf-aa04-4bdb9ec2a44a', 'Japan', 'Osaka', 'Street-06', '600000', 'REGISTERED', '474b0d63-a5b3-44eb-ac21-04d0c79d3eca', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO addresses(id, country, city, street, postcode, status_address, client_id, row_version, created, created_by) VALUES ('3c14d7a0-372c-4c24-8587-04227b10699c', 'China', 'Pekin', 'Street-07', '700000', 'NEW', 'bac303b4-7aae-47cf-aa04-4bdb9ec2a44a', 0, '2019-08-26 12:39:16', 'system')
+        - sql:
+            sql: INSERT INTO addresses(id, country, city, street, postcode, status_address, client_id, row_version, created, created_by) VALUES ('bf9b71e8-a3ca-4c13-a4b2-fb2f0de87f28', 'Israel', 'Tel-Aviv', 'Street-07', '800000', 'NEW', '3c14d7a0-372c-4c24-8587-04227b10699c', 0, '2019-08-26 12:39:16', 'system')

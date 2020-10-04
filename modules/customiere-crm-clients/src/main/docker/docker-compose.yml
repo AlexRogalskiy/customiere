@@ -1,0 +1,38 @@
+version: "2.0"
+
+services:
+  postgres:
+    build: ./postgres/
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - overlay
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
+  #      endpoint_mode: dnsrr
+
+  customiere-crm-clients:
+    build: ./java/
+    ports:
+      - "8080:8089"
+    networks:
+      - overlay
+    #    deploy:
+    #      mode: replicated
+    #      replicas: 2
+    #      endpoint_mode: vip
+    depends_on:
+      - postgres
+
+volumes:
+  db-data:
+
+networks:
+  overlay:
