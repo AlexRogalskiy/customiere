@@ -3,7 +3,6 @@ package com.sensiblemetrics.api.customiere.crm.clients.configuration;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.json.JsonWriteFeature;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.sensiblemetrics.api.customiere.crm.clients.property.RestApiProperty;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
@@ -13,7 +12,6 @@ import org.modelmapper.convention.NamingConventions;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
@@ -22,7 +20,6 @@ import org.springframework.context.annotation.Role;
 import java.util.List;
 
 @Configuration
-@EnableConfigurationProperties(RestApiProperty.class)
 @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
 @Description("SensibleMetrics WebService Mapper configuration")
 public class WebServiceMapperConfiguration {

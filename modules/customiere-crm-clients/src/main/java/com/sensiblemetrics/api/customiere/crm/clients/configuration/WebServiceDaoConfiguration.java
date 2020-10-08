@@ -64,7 +64,7 @@ public class WebServiceDaoConfiguration {
         return PostgresqlConnectionConfiguration.builder()
             .host(property.getHost())
             .port(property.getPort())
-            .database(property.getDatabase())
+            .database(property.getDbName())
             .username(property.getUsername())
             .password(property.getPassword())
             .build();

@@ -31,16 +31,16 @@ public class DatabaseProperty extends DataSourceProperties {
     /**
      * Default database host
      */
-    @NotBlank(message = "Database <host> property should not be blank")
+    @NotBlank(message = "{property.database.host.notBlank}")
     private String host;
     /**
      * Default database port
      */
-    @PositiveOrZero(message = "Database <port> property should be positive or zero")
+    @PositiveOrZero(message = "{property.database.port.positiveOrZero}")
     private int port;
     /**
      * Default database name
      */
-    @NotBlank(message = "Database <database> property should not be blank")
-    private String database;
+    @NotBlank(message = "{property.database.db-name.notBlank}")
+    private String dbName;
 }
