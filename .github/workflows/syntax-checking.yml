@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: jsonlint
-        uses: docker://github/super-linter:v3@sha256:abc95f3cfe48931f11208ebddfccd9b7a3e4c8e7d5e7da98ff43b00d717dfae5
+        uses: docker://github/super-linter:v4@sha256:90bb745c4efd5e2d5266e18a6330a46a252a9e990f0d29a1c8ec0044ea79530d
         env:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_JSON: true
