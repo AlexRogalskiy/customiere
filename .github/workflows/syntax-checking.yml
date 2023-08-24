@@ -14,7 +14,7 @@ jobs:
         run: git config --global core.autocrlf false
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: jsonlint
         uses: docker://github/super-linter:v3@sha256:abc95f3cfe48931f11208ebddfccd9b7a3e4c8e7d5e7da98ff43b00d717dfae5
