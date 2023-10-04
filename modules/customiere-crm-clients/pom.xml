@@ -43,7 +43,7 @@
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
         <modelmapper.version>2.3.8</modelmapper.version>
         <p6spy.version>3.9.1</p6spy.version>
-        <r2dbc-postgresql.version>0.8.5.RELEASE</r2dbc-postgresql.version>
+        <r2dbc-postgresql.version>0.8.13.RELEASE</r2dbc-postgresql.version>
 
         <sensiblemetrics.version>0.1.0-SNAPSHOT</sensiblemetrics.version>
     </properties>
