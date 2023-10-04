@@ -225,7 +225,7 @@
         <mockito-junit-jupiter.version>3.5.13</mockito-junit-jupiter.version>
         <mockito.version>3.5.13</mockito.version>
         <modernizer.version>2.1.0</modernizer.version>
-        <plexus-utils.version>3.3.0</plexus-utils.version>
+        <plexus-utils.version>3.5.1</plexus-utils.version>
 
         <reactor.version>Dysprosium-SR12</reactor.version>
         <r2dbc.version>Arabba-SR7</r2dbc.version>
