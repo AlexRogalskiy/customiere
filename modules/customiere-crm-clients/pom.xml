@@ -40,7 +40,7 @@
         <maven-exec-plugin.version>1.6.0</maven-exec-plugin.version>
 
         <maven-liquibase-plugin.version>4.0.0</maven-liquibase-plugin.version>
-        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+        <maven-shade-plugin.version>3.5.1</maven-shade-plugin.version>
         <modelmapper.version>2.3.8</modelmapper.version>
         <p6spy.version>3.9.1</p6spy.version>
         <r2dbc-postgresql.version>0.8.5.RELEASE</r2dbc-postgresql.version>
