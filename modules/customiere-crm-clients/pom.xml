@@ -18,7 +18,7 @@
     <inceptionYear>2020</inceptionYear>
 
     <properties>
-        <spring-boot-thin.version>1.0.25.RELEASE</spring-boot-thin.version>
+        <spring-boot-thin.version>1.0.31.RELEASE</spring-boot-thin.version>
         <spring-integration.version>5.3.2.RELEASE</spring-integration.version>
 
         <swagger.version>3.0.0</swagger.version>
