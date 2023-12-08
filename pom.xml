@@ -131,7 +131,7 @@
         <awaitility.version>4.0.3</awaitility.version>
         <commons-lang3.version>3.11</commons-lang3.version>
         <commons-compress.version>1.20</commons-compress.version>
-        <commons-validator.version>1.7</commons-validator.version>
+        <commons-validator.version>1.8.0</commons-validator.version>
         <guava.version>29.0-jre</guava.version>
         <hamcrest-matchers.version>2.0.0</hamcrest-matchers.version>
         <hamcrest.version>2.2</hamcrest.version>
