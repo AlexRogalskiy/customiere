@@ -190,7 +190,7 @@
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <maven-jib-plugin.version>2.5.2</maven-jib-plugin.version>
-        <maven-license-plugin.version>2.0.0</maven-license-plugin.version>
+        <maven-license-plugin.version>2.4.0</maven-license-plugin.version>
         <maven-lombok-plugin.version>1.18.12.0</maven-lombok-plugin.version>
         <maven-modernizer-plugin.version>2.1.0</maven-modernizer-plugin.version>
         <maven-plugin-os.version>1.6.2</maven-plugin-os.version>
