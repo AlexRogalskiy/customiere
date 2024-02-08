@@ -24,7 +24,7 @@
         <swagger.version>3.0.0</swagger.version>
 
         <eclipse-paho-client.version>1.2.5</eclipse-paho-client.version>
-        <hibernate-core.version>6.1.0.Final</hibernate-core.version>
+        <hibernate-core.version>6.4.4.Final</hibernate-core.version>
         <hibernate-types.version>2.9.13</hibernate-types.version>
         <cache-api.version>1.1.1</cache-api.version>
         <ehcache.version>3.9.0</ehcache.version>
