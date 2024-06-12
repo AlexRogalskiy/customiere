@@ -137,7 +137,7 @@
         <hamcrest.version>2.2</hamcrest.version>
         <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
 
-        <commons-net.version>3.7</commons-net.version>
+        <commons-net.version>3.11.1</commons-net.version>
         <ant-commons-net.version>1.10.8</ant-commons-net.version>
         <ant-nodeps.version>1.8.1</ant-nodeps.version>
         <ant-contrib.version>20020829</ant-contrib.version>
