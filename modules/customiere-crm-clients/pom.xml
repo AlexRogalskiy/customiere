@@ -36,7 +36,7 @@
         <image.to.path>registry.hub.docker.com/alexanderr/customiere</image.to.path>
 
         <liquibase.propertyFile>${project.basedir}/src/main/resources/liquibase.properties</liquibase.propertyFile>
-        <liquibase.version>4.0.0</liquibase.version>
+        <liquibase.version>4.29.2</liquibase.version>
         <maven-exec-plugin.version>1.6.0</maven-exec-plugin.version>
 
         <maven-liquibase-plugin.version>4.0.0</maven-liquibase-plugin.version>
