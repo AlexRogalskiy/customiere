@@ -233,7 +233,7 @@
         <slf4j-api.version>1.7.30</slf4j-api.version>
         <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
         <spring-cloud-kubernetes.version>1.1.6.RELEASE</spring-cloud-kubernetes.version>
-        <throwing-function.version>1.5.1</throwing-function.version>
+        <throwing-function.version>1.6.1</throwing-function.version>
 
         <validation-api.version>2.0.1.Final</validation-api.version>
     </properties>
