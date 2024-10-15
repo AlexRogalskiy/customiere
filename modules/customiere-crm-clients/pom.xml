@@ -31,7 +31,7 @@
         <hikari.version>3.4.5</hikari.version>
 
         <reactor-netty.version>0.9.12.RELEASE</reactor-netty.version>
-        <reactor-core.version>3.3.10.RELEASE</reactor-core.version>
+        <reactor-core.version>3.6.11</reactor-core.version>
 
         <image.to.path>registry.hub.docker.com/alexanderr/customiere</image.to.path>
 
