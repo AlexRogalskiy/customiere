@@ -227,7 +227,7 @@
         <modernizer.version>2.1.0</modernizer.version>
         <plexus-utils.version>3.3.0</plexus-utils.version>
 
-        <reactor.version>Dysprosium-SR12</reactor.version>
+        <reactor.version>2023.0.11</reactor.version>
         <r2dbc.version>Arabba-SR7</r2dbc.version>
 
         <slf4j-api.version>1.7.30</slf4j-api.version>
