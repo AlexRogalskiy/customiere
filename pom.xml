@@ -182,7 +182,7 @@
         <maven-fizzed-plugin.version>1.0.6</maven-fizzed-plugin.version>
         <maven-flatten-plugin.version>1.2.5</maven-flatten-plugin.version>
         <maven-forbiddenapis-plugin.version>3.1</maven-forbiddenapis-plugin.version>
-        <maven-git-commit-id-plugin.version>4.0.2</maven-git-commit-id-plugin.version>
+        <maven-git-commit-id-plugin.version>4.9.10</maven-git-commit-id-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-help-plugin.version>3.2.0</maven-help-plugin.version>
         <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
