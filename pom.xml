@@ -228,7 +228,7 @@
         <plexus-utils.version>3.3.0</plexus-utils.version>
 
         <reactor.version>Dysprosium-SR12</reactor.version>
-        <r2dbc.version>Arabba-SR7</r2dbc.version>
+        <r2dbc.version>Borca-SR2</r2dbc.version>
 
         <slf4j-api.version>1.7.30</slf4j-api.version>
         <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
